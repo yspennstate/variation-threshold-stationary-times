@@ -1,0 +1,77 @@
+checks.py: mpmath 1.3.0, numpy 2.4.3
+
+== 1. The three-state chain of Theorem 1 ==
+PASS  eps=1/100: tau_0 closed form = eigentime identity = mean hitting times  [tau_0 = 1.999801999802, largest difference 7.81e-40]
+PASS  eps=1/100: tau_0 < 2
+PASS  eps=1/100: expm and spectral P_t agree on t = 0, 0.1, ..., 4  [largest difference 1.78e-40]
+PASS  eps=1/100: dbar nonincreasing on the grid of [0, 2] (step 0.001)
+PASS  eps=1/100: dbar(t) > 1/e on the grid  [min dbar = 0.4024006404, 1/e = 0.3678794412]
+PASS  eps=1/100: P_0(X_t = 0) >= exp(-eps t) on the grid
+PASS  eps=1/100: P_2(X_t = 0) <= P_2(T_0 <= t) <= 1 - g((1+eps) t) (every 50th point)
+PASS  eps=1/100: dbar(t) >= P_0(X_t=0) - P_2(X_t=0) >= exp(-eps t) - 1 + g((1+eps) t)
+PASS  eps=1/100: the lower bound exceeds 1/e on the grid  [min of the bound = 0.3808181778]
+PASS  eps=1/100: f(eps) = 3 - e - eps(4 + 2e^2) - 4eps^2 > 0  [f = 0.09353704956]
+PASS  eps=1/100: tau_1 > 2 > tau_0  [dbar(2) = 0.402401 at the pair (0, 2), tau_1 = 2.13306866186, tau_0 = 1.9998019998, tau_1/tau_0 = 1.0666399]
+PASS  eps=1/100: tau_1 from expm agrees  [tau_1 = 2.13306866186]
+PASS  eps=1/1000: tau_0 closed form = eigentime identity = mean hitting times  [tau_0 = 1.999998002, largest difference 8.47e-39]
+PASS  eps=1/1000: tau_0 < 2
+PASS  eps=1/1000: expm and spectral P_t agree on t = 0, 0.1, ..., 4  [largest difference 6.28e-40]
+PASS  eps=1/1000: dbar nonincreasing on the grid of [0, 2] (step 0.001)
+PASS  eps=1/1000: dbar(t) > 1/e on the grid  [min dbar = 0.4056449918, 1/e = 0.3678794412]
+PASS  eps=1/1000: P_0(X_t = 0) >= exp(-eps t) on the grid
+PASS  eps=1/1000: P_2(X_t = 0) <= P_2(T_0 <= t) <= 1 - g((1+eps) t) (every 50th point)
+PASS  eps=1/1000: dbar(t) >= P_0(X_t=0) - P_2(X_t=0) >= exp(-eps t) - 1 + g((1+eps) t)
+PASS  eps=1/1000: the lower bound exceeds 1/e on the grid  [min of the bound = 0.4034667779]
+PASS  eps=1/1000: f(eps) = 3 - e - eps(4 + 2e^2) - 4eps^2 > 0  [f = 0.2629360593]
+PASS  eps=1/1000: tau_1 > 2 > tau_0  [dbar(2) = 0.405645 at the pair (0, 2), tau_1 = 2.14488709458, tau_0 = 1.999998002, tau_1/tau_0 = 1.0724446]
+PASS  eps=1/1000: tau_1 from expm agrees  [tau_1 = 2.14488709458]
+PASS  control: f(1/20) < 0, so the hand bound needs small eps  [f(1/20) = -0.667187]
+PASS  control: at eps = 1/20 the ratio tau_1/tau_0 still exceeds 1  [ratio 1.0421391]
+INFO  three-state chain: tau_1 > tau_0 for eps below about 0.127293; at eps = 1 the ratio is 0.75
+
+== 2. The chains on {0, ..., k} ==
+PASS  t_1 = 1.0, t_1/1 = 1.0 (sign change on an interval of width 2e-40)
+PASS  t_2 = 2.14619322062058, t_2/2 = 1.07309661 (sign change on an interval of width 2e-40)
+PASS  t_3 = 3.25825246886704, t_3/3 = 1.08608416 (sign change on an interval of width 2e-40)
+PASS  t_4 = 4.35199268780234, t_4/4 = 1.08799817 (sign change on an interval of width 2e-40)
+PASS  t_5 = 5.43409274762063, t_5/5 = 1.08681855 (sign change on an interval of width 2e-40)
+PASS  t_6 = 6.5079956288379, t_6/6 = 1.08466594 (sign change on an interval of width 2e-40)
+PASS  t_7 = 7.57573470171747, t_7/7 = 1.08224781 (sign change on an interval of width 2e-40)
+PASS  t_8 = 8.63862503630477, t_8/8 = 1.07982813 (sign change on an interval of width 2e-40)
+PASS  max of t_k/k over k <= 60 is at k = 4  [t_4/4 = 1.08799817195, t_60/60 = 1.0385112]
+PASS  t_1 = 1 exactly
+PASS  k = 2, eps = 0: dbar(t) = P(Gamma(2) > t), attained at (0, 2), t = 0.25..10  [largest difference 9.86e-32]
+PASS  k = 3, eps = 0: dbar(t) = P(Gamma(3) > t), attained at (0, 3), t = 0.25..10  [largest difference 9.86e-32]
+PASS  k = 4, eps = 0: dbar(t) = P(Gamma(4) > t), attained at (0, 4), t = 0.25..10  [largest difference 9.86e-32]
+PASS  k = 6, eps = 0: dbar(t) = P(Gamma(6) > t), attained at (0, 6), t = 0.25..10  [largest difference 1.97e-31]
+PASS  k = 2: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 0.001: tau_0 = 1.999998002, tau_1 = 2.144887095, ratio 1.07244462]
+PASS  k = 2: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-5: tau_0 = 2.0, tau_1 = 2.146180166, ratio 1.07309008]
+PASS  k = 2: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-7: tau_0 = 2.0, tau_1 = 2.14619309, ratio 1.07309655]
+PASS  k = 2: |tau_1/tau_0 - t_k/k| < 1e-5 at eps = 1e-7  [gap 6.53e-8]
+PASS  k = 3: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 0.001: tau_0 = 3.000998997, tau_1 = 3.257319677, ratio 1.08541178]
+PASS  k = 3: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-5: tau_0 = 3.00001, tau_1 = 3.258243163, ratio 1.08607743]
+PASS  k = 3: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-7: tau_0 = 3.0000001, tau_1 = 3.258252376, ratio 1.08608409]
+PASS  k = 3: |tau_1/tau_0 - t_k/k| < 1e-5 at eps = 1e-7  [gap 6.72e-8]
+PASS  k = 4: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 0.001: tau_0 = 4.001999998, tau_1 = 4.351736415, ratio 1.08739041]
+PASS  k = 4: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-5: tau_0 = 4.00002, tau_1 = 4.351990156, ratio 1.0879921]
+PASS  k = 4: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-7: tau_0 = 4.0000002, tau_1 = 4.351992662, ratio 1.08799811]
+PASS  k = 4: |tau_1/tau_0 - t_k/k| < 1e-5 at eps = 1e-7  [gap 6.07e-8]
+PASS  k = 6: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 0.001: tau_0 = 6.004002, tau_1 = 6.509424619, ratio 1.08418095]
+PASS  k = 6: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-5: tau_0 = 6.00004, tau_1 = 6.508009953, ratio 1.08466109]
+PASS  k = 6: tau_1 > tau_0 and |tau_1/tau_0 - t_k/k| decreasing  [eps = 1.0e-7: tau_0 = 6.0000004, tau_1 = 6.507995772, ratio 1.08466589]
+PASS  k = 6: |tau_1/tau_0 - t_k/k| < 1e-5 at eps = 1e-7  [gap 4.84e-8]
+
+== 3. Theorem 2 on random reversible chains ==
+PASS  continuous time: tau_2 <= tau_1^(2) on 3000 random chains (2 to 8 states)  [0 failures; smallest tau_1^(2)/tau_2 = 1.000000]
+PASS  continuous time: min_U E_i U >= tau_2 |u_i| / max|u| at every state  [0 chains failed]
+PASS  continuous time: (4.47) = linear program over occupation measures, every state of 600 chains  [0 states disagreed]
+PASS  continuous time: E_i T_j from linear systems = (Z_jj - Z_ij)/pi_j on 600 chains
+PASS  discrete time: tau_2 <= tau_1^(2) on 3000 random chains (2 to 8 states)  [0 failures; smallest tau_1^(2)/tau_2 = 1.000000]
+PASS  discrete time: min_U E_i U >= tau_2 |u_i| / max|u| at every state  [0 chains failed]
+PASS  discrete time: (4.47) = linear program over occupation measures, every state of 600 chains  [0 states disagreed]
+PASS  discrete time: E_i T_j from linear systems = (Z_jj - Z_ij)/pi_j on 600 chains
+PASS  control: the absolute relaxation time exceeds tau_1^(2) on some chains  [1584 of 3000 chains]
+PASS  two-state chains: tau_2 = tau_1^(2) = tau_0 = tau_1 = 1/(a+b)  [largest relative difference 2.03e-20]
+PASS  control: P = [[0.01, 0.99], [0.99, 0.01]]: tau_1^(2) = tau_2 = 1/1.98, absolute relaxation time 50  [tau_1^(2) = 0.505050505051]
+
+0 failure(s)

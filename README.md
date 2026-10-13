@@ -24,3 +24,21 @@ Among the inequalities proved there are τ₂ ≤ τ₁ ≤ 66 τ₀ and τ₂ �
 
 Both statements hold for discrete-time chains with the conventions of the book. The best constant C in τ₁ ≤ C τ₀ lies
 between t₄/4 and 66.
+
+## Contents
+
+- `paper/main.tex`, `paper/main.pdf`: the paper.
+- `code/checks.py`: numerical checks of the identities and inequalities used in the proofs, in multiple-precision
+  arithmetic where it matters (Python 3 with mpmath, NumPy and SciPy). `code/checks_output.txt` is its output.
+- `code/Margin.lean`: the real-variable inequalities in the proof of Theorem 1(i), proved in Lean 4 with Mathlib.
+  `code/lean_output.txt` records the compiler's exit status.
+- `SHA256SUMS.txt`: checksums of the files above.
+
+## Running the checks
+
+    python code/checks.py > code/checks_output.txt
+
+The Lean file was checked with Lean 4.33.1 and Mathlib commit
+0df444a360eaa60ab8c11dca51a86af692955474; inside a Lake project that depends on that Mathlib, run
+
+    lake env lean Margin.lean
