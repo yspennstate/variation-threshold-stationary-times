@@ -18,7 +18,7 @@
 \author{Yitzchak Shmalo}
 \address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
 \email{yitzchak.shmalo@gmail.com}
-\date{13 October 2026}
+\date{13 October 2026; revised 12 November 2026}
 \subjclass[2020]{60J27, 60J10}
 \keywords{Reversible Markov chain, mixing time, Kemeny's constant, relaxation time, stationary time}
 
@@ -49,7 +49,7 @@ The comparison of these parameters goes back to Aldous \cite{Ald82}. Among the i
 \item Is $\tau_1\le\tau_0$?
 \item Is $\tau_2\le\tau_1^{(2)}$?
 \end{enumerate}
-We show that the answer to (a) is no and the answer to (b) is yes. Up to an absolute constant factor, $\tau_2$ is characterized by stationary expected hitting times of large sets; this is a theorem of Hermon~\cite{Her23}, which resolves a different conjecture of Aldous and Fill.
+We show that the answer to (a) is no and the answer to (b) is yes. Up to an absolute constant factor, $\tau_2$ is the largest expected hitting time of a set $A$ with $\pi(A)\ge1/2$ for the chain started from $\pi$ conditioned on the complement of $A$; this is a theorem of Hermon~\cite[Theorem~1.1]{Her23}, which resolves \cite[Open Problem~4.38]{AF}.
 
 For $k\ge1$ and $\varepsilon>0$ let $X^{(k,\varepsilon)}$ be the chain on $\{0,1,\dots,k\}$ that jumps from $i$ to $i-1$ at rate $1$ for $1\le i\le k$ and from $i$ to $i+1$ at rate $\varepsilon$ for $0\le i\le k-1$. It is reversible, with $\pi_i$ proportional to $\varepsilon^i$. Let $\Gamma_k$ be a random variable with the Gamma$(k,1)$ distribution, the law of a sum of $k$ independent standard exponential variables, and let $t_k$ be the solution of
 \begin{equation}\label{eq:tk}
@@ -101,7 +101,7 @@ The chain started at $0$ stays there for an exponential time with rate $\varepsi
 \begin{equation}\label{eq:stay}
 \Pp_0(X_t=0)\ge e^{-\varepsilon t}.
 \end{equation}
-For the chain started at $2$, let $Y_0=2,Y_1=1,Y_2,\dots$ be its jump chain and $S_0,S_1,\dots$ its holding times. Given the jump chain, the holding times are independent, and $S_m$ is exponential with rate $1$ if $Y_m=2$ and with rate $1+\varepsilon$ if $Y_m=1$. Let $N=\min\{m:Y_m=0\}$. Then $N\ge2$, $Y_{N-1}=1$ and
+For the chain started at $2$, let $Y_0=2,Y_1=1,Y_2,\dots$ be its jump chain and $S_0,S_1,\dots$ its holding times. Given the jump chain, the holding times are independent, and $S_m$ is exponential with rate $1$ if $Y_m=2$, with rate $1+\varepsilon$ if $Y_m=1$ and with rate $\varepsilon$ if $Y_m=0$. Let $N=\min\{m:Y_m=0\}$. Then $N\ge2$, $Y_{N-1}=1$ and
 \[
 T_0=S_0+\dots+S_{N-1}\ge S_0+S_{N-1}.
 \]
@@ -133,7 +133,7 @@ For $\tau_1$, let $P^\varepsilon_t=e^{tQ_\varepsilon}$ for $\varepsilon\ge0$. Th
 with equality throughout when $i=0$ and $j=k$. Hence $\dbar_0(t)=\Pp(\Gamma_k>t)$. This function is continuous and strictly decreasing from $1$ to $0$. For $0<\delta<t_k$ it is therefore at least $\dbar_0(t_k-\delta)>e^{-1}$ on $[0,t_k-\delta]$, and $\dbar_0(t_k+\delta)<e^{-1}$. By uniform convergence on $[0,t_k+\delta]$, for all small $\varepsilon$ we have $\dbar_\varepsilon>e^{-1}$ on $[0,t_k-\delta]$ and $\dbar_\varepsilon(t_k+\delta)<e^{-1}$, so $t_k-\delta<\tau_1\le t_k+\delta$. This proves part~(ii).
 
 \subsection{Discrete time}\label{sec:a-disc}
-Let $0<c\le1/(1+\varepsilon)$. Every diagonal entry of $Q_\varepsilon$ is at least $-(1+\varepsilon)$, so $P=I+cQ_\varepsilon$ is a transition matrix, irreducible and reversible with respect to the same $\pi$. Its continuization has generator $P-I=cQ_\varepsilon$ and is $X^{(k,\varepsilon)}$ run at speed $c$, so its variation threshold, which is $\tau_1$ of $P$, is $\tau_1/c$, with $\tau_1$ that of $X^{(k,\varepsilon)}$. Continuization does not change mean hitting times \cite[Section~4.3.2]{AF}, so $\tau_0$ of $P$ is $\tau_0/c$. Hence $P$ has the same ratio $\tau_1/\tau_0$ as $X^{(k,\varepsilon)}$: for $k=2$ and $0<\varepsilon\le1/100$ it has $\tau_1>\tau_0$, and its ratio tends to $t_k/k$ as $\varepsilon\to0$.
+Let $0<c\le1/(1+\varepsilon)$. Every diagonal entry of $Q_\varepsilon$ is at least $-(1+\varepsilon)$, so $P=I+cQ_\varepsilon$ is a transition matrix, irreducible and reversible with respect to the same $\pi$. Its continuization has generator $P-I=cQ_\varepsilon$ and is $X^{(k,\varepsilon)}$ run at speed $c$. Write $\tau_0(P)$ and $\tau_1(P)$ for the parameters of $P$, and $\tau_0$ and $\tau_1$ for those of $X^{(k,\varepsilon)}$. The variation threshold of the continuization, which is $\tau_1(P)$, equals $\tau_1/c$. Continuization does not change mean hitting times \cite[Section~4.3.2]{AF}, so $\tau_0(P)=\tau_0/c$. Hence $\tau_1(P)/\tau_0(P)=\tau_1/\tau_0$: for $k=2$ and $0<\varepsilon\le1/100$ the chain $P$ has $\tau_1(P)>\tau_0(P)$, and its ratio tends to $t_k/k$ as $\varepsilon\to0$.
 
 For $k=2$ the inequality also holds, once $c$ is small, for the variation threshold of $P$ itself, $\tau_1^{\mathrm{disc}}=\min\{m\ge0:\dbar(m)\le e^{-1}\}$, where $\dbar(m)$ is computed from the matrix $P^m$ \cite[Section~4.3.1]{AF}. Let $0<\varepsilon\le1/100$ and $Q=Q_\varepsilon$, and write $\|A\|=\max_i\sum_j|A_{ij}|$. The matrices $I+cQ$ and $e^{cQ}$ are stochastic, so
 \[
@@ -144,7 +144,7 @@ which is at most $c\|Q\|^2e^{c\|Q\|}$ when $mc\le2$. The function $\dbar$ of a s
 \section{Proof of Theorem~\ref{thm:b}}\label{sec:b}
 
 \begin{proof}[Proof of Theorem~\ref{thm:b}]
-Replacing $u$ by $-u$ we may assume $u(i)\ge0$. Since $\pi Q=0$, we have $-\lambda_2\pi(u)=\pi(Qu)=0$, so $\pi(u)=0$. Let $U$ be a stopping time for a filtration $(\mathcal F_t)$ with respect to which $X$ is Markov, with $\Pp_i(X_U\in\cdot)=\pi$, and assume that $\E_iU<\infty$. For every function $h$ on $I$, the process $h(X_t)-h(X_0)-\int_0^t(Qh)(X_s)\,ds$ is an $(\mathcal F_t)$-martingale, so optional stopping at the bounded time $U\wedge t$, with $h=u$, gives
+Replacing $u$ by $-u$ we may assume $u(i)\ge0$. Since $\pi Q=0$, we have $-\lambda_2\pi(u)=\pi(Qu)=0$, so $\pi(u)=0$. Let $U$ be a stopping time for a filtration $(\mathcal F_t)$ with respect to which $X$ is Markov, with $\Pp_i(X_U\in\cdot)=\pi$. If $\E_iU=\infty$ there is nothing to prove, so assume that $\E_iU<\infty$. For every function $h$ on $I$, the process $h(X_t)-h(X_0)-\int_0^t(Qh)(X_s)\,ds$ is an $(\mathcal F_t)$-martingale, so optional stopping at the bounded time $U\wedge t$, with $h=u$, gives
 \[
 \E_iu(X_{U\wedge t})-u(i)=-\lambda_2\,\E_i\int_0^{U\wedge t}u(X_s)\,ds.
 \]
@@ -182,7 +182,13 @@ $\lambda_2=\lambda_n=2\delta-1$ and $\tau_2=1/(2(1-\delta))$. Stopping at time $
 
 \section{Computations}\label{sec:checks}
 
-The repository listed under Data availability contains a Python script, \texttt{checks.py}, with its output, and a Lean file, \texttt{Margin.lean}. For $X^{(2,\varepsilon)}$ with $\varepsilon=1/100$ and $\varepsilon=1/1000$, the script computes $\tau_0$ from the closed form, from the eigentime identity and from the mean hitting times; computes $\dbar_\varepsilon(t)$ from the matrix exponential and from the spectral decomposition, in $40$-digit arithmetic; checks $\dbar_\varepsilon(t)>e^{-1}$, \eqref{eq:d02}, \eqref{eq:stay}, the first inequality of \eqref{eq:lower} and the bound $e^{-\varepsilon t}-1+g((1+\varepsilon)t)>e^{-1}$ on a grid of step $0.001$ on $[0,2]$, and \eqref{eq:descend} at the multiples of $0.05$ in $[0,2]$; and finds $\tau_1$ by bisection. At $\varepsilon=1/100$, $\tau_0=1.99980\ldots$, $\tau_1=2.13306\ldots$ and the smallest value of $\dbar_\varepsilon$ on $[0,2]$ is $0.40240\ldots$; at $\varepsilon=1/1000$, $\tau_1/\tau_0=1.07244\ldots$. At $\varepsilon=1/20$, where $f(\varepsilon)<0$ and the proof does not apply, the ratio $\tau_1/\tau_0$ is still $1.0421\ldots$. For the chains on $\{0,\dots,k\}$ the script computes $t_k$ for $k\le60$ by bisection, with a sign check on an interval of width $2\cdot10^{-40}$ for $k\le8$; checks $\dbar_0(t)=\Pp(\Gamma_k>t)$, attained at the pair $(0,k)$, for $k=2,3,4,6$; and computes $\tau_1/\tau_0$ at $\varepsilon=10^{-3},10^{-5},10^{-7}$ for $k=2,3,4,6$, where it approaches $t_k/k$. For Theorem~\ref{thm:b} it draws $3000$ random reversible chains with $2$ to $8$ states in continuous time and $3000$ in discrete time. For each it computes $\tau_1^{(2)}$ from \cite[(4.47)]{AF} and checks the inequality of Theorem~\ref{thm:b} at every state. For $600$ of the chains in each sample it also solves, at every state $i$, the linear program that minimizes the total mass of a measure $x\ge0$ on $I$ with $xG=\pi-\delta_i$, where $G=Q$ or $G=P-I$ (the expected occupation measure of a stopping time $U$ with $\Pp_i(X_U\in\cdot)=\pi$ satisfies these constraints and has total mass $\E_iU$), checks that its value agrees with \cite[(4.47)]{AF}, and checks the mean hitting times against the fundamental matrix. The smallest value of $\tau_1^{(2)}/\tau_2$ in each sample is $1.000000$ to six decimals. The script also checks Remark~1 and the example of Remark~5; in the discrete-time sample, the absolute relaxation time exceeds $\tau_1^{(2)}$ for $1584$ of the $3000$ chains. The Lean file, checked with Lean~4 \cite{MU21} (version 4.33.1) and Mathlib \cite{Mathlib20}, proves that $g$ is nonincreasing, that $f(\varepsilon)>0$ for $0<\varepsilon\le1/100$, and that $e^{-\varepsilon t}-1+g((1+\varepsilon)t)>e^{-1}$ for $0<\varepsilon\le1/100$ and $0\le t\le2$, which is the real-variable part of the proof of Theorem~\ref{thm:a}(i).
+The repository listed under Data availability contains a Python script, \texttt{checks.py}, with its output, and a Lean file, \texttt{Margin.lean}. For $X^{(2,\varepsilon)}$ with $\varepsilon=1/100$ and $\varepsilon=1/1000$, the script computes $\tau_0$ from the closed form, from the eigentime identity and from the mean hitting times; computes $\dbar_\varepsilon(t)$ from the matrix exponential and from the spectral decomposition, in $40$-digit arithmetic; checks $\dbar_\varepsilon(t)>e^{-1}$, \eqref{eq:d02}, \eqref{eq:stay}, the first inequality of \eqref{eq:lower} and the bound $e^{-\varepsilon t}-1+g((1+\varepsilon)t)>e^{-1}$ on a grid of step $0.001$ on $[0,2]$, and \eqref{eq:descend} at the multiples of $0.05$ in $[0,2]$; and finds $\tau_1$ by bisection. At $\varepsilon=1/100$, $\tau_0=1.99980\ldots$, $\tau_1=2.13306\ldots$ and the smallest value of $\dbar_\varepsilon$ on $[0,2]$ is $0.40240\ldots$; at $\varepsilon=1/1000$, $\tau_1/\tau_0=1.07244\ldots$. At $\varepsilon=1/20$, where $f(\varepsilon)<0$ and the proof does not apply, the ratio $\tau_1/\tau_0$ is still $1.0421\ldots$.
+
+For the chains on $\{0,\dots,k\}$ the script computes $t_k$ for $k\le60$ by bisection, with a sign check on an interval of width $2\cdot10^{-40}$ for $k\le8$; checks $\dbar_0(t)=\Pp(\Gamma_k>t)$, attained at the pair $(0,k)$, for $k=2,3,4,6$; and computes $\tau_1/\tau_0$ at $\varepsilon=10^{-3},10^{-5},10^{-7}$ for $k=2,3,4,6$, where it approaches $t_k/k$.
+
+For Theorem~\ref{thm:b} it draws $3000$ random reversible chains with $2$ to $8$ states in continuous time and $3000$ in discrete time. For each it computes $\tau_1^{(2)}$ from \cite[(4.47)]{AF} and checks the inequality of Theorem~\ref{thm:b} at every state. For $600$ of the chains in each sample it also solves, at every state $i$, the linear program that minimizes the total mass of a measure $x\ge0$ on $I$ with $xG=\pi-\delta_i$, where $G=Q$ or $G=P-I$ (the expected occupation measure of a stopping time $U$ with $\Pp_i(X_U\in\cdot)=\pi$ satisfies these constraints and has total mass $\E_iU$), checks that its value agrees with \cite[(4.47)]{AF}, and checks the mean hitting times against the fundamental matrix. The smallest value of $\tau_1^{(2)}/\tau_2$ in each sample is $1.000000$ to six decimals. The script also checks Remark~1 and the example of Remark~5; in the discrete-time sample, the absolute relaxation time exceeds $\tau_1^{(2)}$ for $1584$ of the $3000$ chains.
+
+The Lean file, checked with Lean~4 \cite{MU21} (version 4.33.1) and Mathlib \cite{Mathlib20}, proves that $g$ is nonincreasing, that $f(\varepsilon)>0$ for $0<\varepsilon\le1/100$, and that $e^{-\varepsilon t}-1+g((1+\varepsilon)t)>e^{-1}$ for $0<\varepsilon\le1/100$ and $0\le t\le2$, which is the real-variable part of the proof of Theorem~\ref{thm:a}(i).
 
 These computations test the identities and inequalities used in the proofs; they are not part of them.
 
@@ -208,11 +214,11 @@ in the funding declaration above.
 The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. Open Problem~4.48 of \cite{AF} was among the open problems in probability on which the project's agents worked in September 2026. On 6 September 2026 an agent running in OpenAI's Codex wrote the optional stopping argument that proves Theorem~\ref{thm:b}. On 14 September 2026 Claude Fable~5.1 (Anthropic) found the chains of Theorem~\ref{thm:a}, sketched the proof of its part~(ii), and wrote out the proof of Theorem~\ref{thm:b}. On 13 October 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, proved part~(i) of Theorem~\ref{thm:a} for $0<\varepsilon\le1/100$, completed the proof of part~(ii), searched the literature, and wrote the remarks, the computer checks, the Lean file and the manuscript. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \section*{Data availability}
-No data were used. The code and the Lean file are available at\\ \url{https://github.com/yspennstate/variation-threshold-stationary-times}.
+No external data were used. The code and the Lean file are available at\\ \url{https://github.com/yspennstate/variation-threshold-stationary-times}.
 
 The paper is part of the Math Brain project, whose public repository is \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 
 \bibitem{AF}
 D.~Aldous and J.~A.~Fill, \emph{Reversible Markov Chains and Random Walks on Graphs}, unfinished monograph, 2002, recompiled version 2014, \url{https://www.stat.berkeley.edu/~aldous/RWG/book.pdf}.
